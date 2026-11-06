@@ -1,0 +1,53 @@
+# Build metadata and tool configuration only.
+# Environments and dependencies are managed by Pixi (see pixi.toml).
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "steward"
+version = "0.1.0"
+description = "Synthetic data, linting, and evaluation tooling for STE-oriented (ASD-STE100) technical writing."
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+dependencies = []
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Typing :: Typed",
+]
+
+[project.scripts]
+steward = "steward.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/steward"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "UP", "SIM", "RUF", "N", "D"]
+ignore = ["D203", "D213"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["D"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src", "tests"]
+mypy_path = "src"
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+addopts = ["-ra", "--strict-markers", "--strict-config"]
+markers = [
+    "gpu: requires a CUDA GPU (never run in default CI)",
+    "network: makes network calls (never run in default CI)",
+]
