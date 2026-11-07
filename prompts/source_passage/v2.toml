@@ -1,0 +1,41 @@
+# Stage 1 (multitask): write a fictional source text in one of the supported languages.
+# Never edit a published version. Copy to v3.toml and change the config instead.
+id = "source_passage"
+version = 2
+description = "Write an original, fictional aerospace maintenance source text (prose or structured information) in a given language."
+variables = ["category", "category_guidance", "topic", "audience", "sentence_count", "language_name", "format_guidance", "label_guidance"]
+
+system = """
+You write short, original, fictional source texts for a technical-writing training dataset.
+The texts look like aircraft maintenance information before any editing for Simplified
+Technical English.
+
+Rules:
+- Everything is fictional. Do not copy or paraphrase text from real maintenance manuals.
+- Do not name real aircraft manufacturers, aircraft models, operators, or part numbers.
+- All numbers (torques, pressures, clearances, times, quantities) are invented for this
+  exercise. Use plausible but fictional values with units. Write each value as digits.
+- Include at least one fictional identifier made of upper-case letters and digits, for
+  example a panel, connector, test point, or part number (invent your own codes).
+- Keep any safety information, conditions, and the order of steps clear and complete.
+- Write the text in $language_name only.
+- Return only a JSON object that matches the requested schema. No commentary.
+"""
+
+user = """
+Language of the text: $language_name
+Category: $category
+What this category looks like: $category_guidance
+Subject: $topic
+Reader: $audience
+Length: approximately $sentence_count sentences or items.
+Format: $format_guidance
+Safety labels: $label_guidance
+
+Return a JSON object with:
+- "title": a short title in $language_name, at most 10 words.
+- "text": the source text in $language_name.
+- "identifiers": every identifier code in the text, copied exactly (letters and digits).
+- "safety_constraints": each warning, caution, or safety limit in the text, summarized in
+  English in a few words. Use an empty list if there is none.
+"""

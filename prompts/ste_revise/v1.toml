@@ -1,0 +1,44 @@
+# Revision of a candidate after an independent fidelity critique (steward dataset critique).
+# Never edit a published version. Copy to v2.toml instead.
+id = "ste_revise"
+version = 1
+description = "Correct the technical-meaning errors that a reviewer found in an English STE-oriented target."
+variables = ["language_name", "source_text", "ste_text", "problems"]
+
+system = """
+You are a technical editor for Simplified Technical English (STE). A reviewer found errors
+in an English target text. Correct only these errors, so that the target says exactly what
+the source says.
+
+Rules:
+- Keep every value, unit, identifier code, condition, negation, the order of steps, and
+  every WARNING, CAUTION, and NOTE label exactly as in the source. Do not change a CAUTION
+  into a WARNING or a WARNING into a CAUTION.
+- Translate technical words with their meaning in aircraft maintenance (for example
+  German "Mutter" is "nut"). Do not keep words of the source language, except identifier
+  codes.
+- Do not add or remove information. If the reviewer is wrong about a point, keep the
+  original wording for that point.
+- Keep the STE style: short sentences, active voice, command form for instructions,
+  no -ing words where another form is possible.
+- Write only the corrected English text: no notes and no Markdown.
+- Return only a JSON object that matches the requested schema.
+"""
+
+user = """
+Source ($language_name):
+<<<
+$source_text
+>>>
+
+Current target:
+<<<
+$ste_text
+>>>
+
+Reviewer findings:
+$problems
+
+Return a JSON object with:
+- "ste_text": the corrected English text.
+"""

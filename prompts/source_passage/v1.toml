@@ -1,0 +1,35 @@
+# Stage 1: write a fictional plain-English source passage.
+# Never edit a published version. Copy to v2.toml and change the config instead.
+id = "source_passage"
+version = 1
+description = "Write an original, fictional, plain-English aerospace maintenance passage for later rewriting."
+variables = ["category", "category_guidance", "topic", "audience", "sentence_count"]
+
+system = """
+You write short, original, fictional passages for a technical-writing training dataset.
+The passages look like aircraft maintenance documentation written in ordinary English,
+before any editing for Simplified Technical English.
+
+Rules:
+- Everything is fictional. Do not copy or paraphrase text from real maintenance manuals.
+- Do not name real aircraft manufacturers, aircraft models, operators, or part numbers.
+- All numbers (torques, pressures, clearances, times, quantities) are invented for this
+  exercise. Use plausible but fictional values with units.
+- Write like a busy engineer before editing: long sentences, passive voice, words ending in
+  -ing, vague words, and several actions in one sentence are all acceptable. Someone will
+  rewrite this text later.
+- Keep any safety information, conditions, and the order of steps clear and complete.
+- Return only a JSON object that matches the requested schema. No commentary.
+"""
+
+user = """
+Category: $category
+What this category looks like: $category_guidance
+Subject: $topic
+Reader: $audience
+Length: approximately $sentence_count sentences.
+
+Return a JSON object with:
+- "title": a short title, at most 10 words.
+- "text": the passage.
+"""

@@ -1,0 +1,133 @@
+# Multitask, multilingual synthetic-data generation (schema 1.1).
+# Every scenario is fictional. Changing this file changes config_sha256 on new records.
+# Task weights cover the three teacher-generated tasks. With the default
+# configs/sft/default.toml, identity (10%) and out-of-domain examples are added
+# when the training set is prepared, so 40/30/20 here gives the 40/30/20/10 mix.
+# Note: top-level keys must come before the first [table] in TOML.
+
+seed = 20261107
+source_template = "source_passage@2"
+rewrite_template = "ste_rewrite@2"
+data_license = "pending-rights-review"
+
+# Fictional subjects. Do not add real part numbers or manufacturer names.
+topics = [
+    "the hydraulic reservoir of a fictional regional turboprop",
+    "the nose landing gear steering actuator of a fictional business jet",
+    "a fuel boost pump in the wing tank of a fictional cargo aircraft",
+    "the cabin pressure outflow valve of a fictional airliner",
+    "an engine oil filter on a fictional turbofan",
+    "the wheel brake assembly of a fictional light aircraft",
+    "a pitot-static probe heater on a fictional helicopter",
+    "the emergency locator transmitter battery of a fictional airliner",
+    "an air-conditioning pack heat exchanger on a fictional regional jet",
+    "the passenger oxygen mask container of a fictional airliner",
+    "a cargo door latch mechanism on a fictional freighter",
+    "the main rotor blade damper of a fictional helicopter",
+    "an engine fire detection loop of a fictional turboprop",
+    "the windshield wiper motor of a fictional business jet",
+    "a flap track roller assembly of a fictional airliner",
+    "the auxiliary power unit starter of a fictional regional jet",
+    "a potable water tank drain valve on a fictional airliner",
+    "the anti-ice valve of a fictional turbofan engine inlet",
+    "a lavatory smoke detector of a fictional airliner",
+    "the propeller de-ice brush block of a fictional turboprop",
+    "the static discharger wicks on the wing of a fictional airliner",
+    "a cockpit display unit cooling fan of a fictional business jet",
+    "the tail rotor gearbox chip detector of a fictional helicopter",
+    "an engine bleed air precooler of a fictional regional jet",
+    "the main landing gear tire of a fictional cargo aircraft",
+    "a fuel quantity probe in the center tank of a fictional airliner",
+    "the galley oven circuit breaker panel of a fictional airliner",
+    "an evacuation slide pressure gauge of a fictional airliner",
+    "the hydraulic hand pump of a fictional light helicopter",
+    "an engine ignition exciter of a fictional turboprop",
+]
+
+audiences = [
+    "a licensed aircraft maintenance technician",
+    "an apprentice mechanic under supervision",
+    "a line maintenance technician working at night",
+]
+
+sentence_counts = [3, 4, 5, 6]
+
+[tasks]
+translation_languages = ["de", "fr", "ro"]
+requirement_languages = ["en", "de", "fr", "ro"]
+
+[tasks.weights]
+plain_to_ste_rewrite = 0.4
+multilingual_to_ste_translation = 0.3
+requirements_to_ste = 0.2
+
+# Source-stage format guidance ($format_guidance in source_passage@2).
+[tasks.source_formats]
+plain_to_ste_rewrite = """
+Ordinary prose, written like a busy engineer before editing: long sentences, passive voice,
+words ending in -ing, vague words, and several actions in one sentence are all acceptable.
+Someone will rewrite this text later."""
+multilingual_to_ste_translation = """
+Ordinary prose, written like a busy engineer before editing: long sentences, passive voice,
+vague words, and several actions in one sentence are all acceptable. Someone will translate
+and rewrite this text later."""
+requirements_to_ste = """
+Structured technical information, not prose: short 'key: value' lines and bullet points,
+for example the component, the preconditions, the required actions as facts, limits with
+units, the tools, and the safety constraints. Do not write complete instructions; a writer
+will turn this information into a document later."""
+
+# Rewrite-stage task instruction ($task_instruction in ste_rewrite@2).
+[tasks.instructions]
+plain_to_ste_rewrite = "Rewrite the English input text into STE-oriented English."
+multilingual_to_ste_translation = """
+The input text is in {language}. Translate it directly into English and write the English
+text in STE. Do not keep any {language} words, except identifier codes."""
+requirements_to_ste = """
+The input is structured technical information in {language}. Write it as an English STE
+{category} text in complete sentences. Do not copy the 'key: value' layout: write
+instructions in the command form and descriptions as short sentences, in a logical order.
+Use only the information in the input. Do not add steps, values, or safety statements."""
+
+[sampling.source]
+temperature = 0.9
+top_p = 0.95
+max_tokens = 900
+
+[sampling.rewrite]
+temperature = 0.2
+top_p = 0.9
+max_tokens = 1000
+
+[request]
+timeout_s = 180
+max_attempts = 3
+initial_backoff_s = 1.0
+max_backoff_s = 30.0
+max_consecutive_failures = 5
+
+[validation]
+max_words_procedural = 20
+max_words_descriptive = 25
+min_length_ratio = 0.3
+max_length_ratio = 3.0
+
+[[categories]]
+name = "procedure"
+weight = 0.4
+guidance = "Step-by-step maintenance instructions, for example removal, installation, inspection, or servicing."
+
+[[categories]]
+name = "description"
+weight = 0.25
+guidance = "A description of how a component or system is built and how it operates."
+
+[[categories]]
+name = "safety_notice"
+weight = 0.15
+guidance = "One or two WARNING or CAUTION notices, each with the hazard and how to avoid it, followed by the related task step."
+
+[[categories]]
+name = "troubleshooting"
+weight = 0.2
+guidance = "A fault symptom, its possible causes, and the checks to isolate the cause, in order."
