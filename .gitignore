@@ -22,11 +22,16 @@ data/
 outputs/
 runs/
 checkpoints/
+models/
 *.safetensors
 *.gguf
 *.bin
 *.pt
 wandb/
+
+# Local hook state
+.steward/
+benchmarks/results/.*.lock
 
 # Secrets
 .env

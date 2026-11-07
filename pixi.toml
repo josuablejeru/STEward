@@ -10,12 +10,25 @@ platforms = ["linux-64"]
 # ---------------------------------------------------------------------------
 [dependencies]
 python = "3.12.*"
+pydantic = ">=2.8"
+httpx = ">=0.27"
+matplotlib-base = ">=3.9"
+pandas = ">=2.2"
+wordfreq = ">=3.1.1,<4"
 
 [pypi-dependencies]
 steward = { path = ".", editable = true }
 
 [tasks]
 steward = { cmd = "steward", description = "Run the steward CLI" }
+benchmark = { cmd = "steward benchmark run", description = "Benchmark registered candidates without a current result (needs Ollama)" }
+benchmark-plot = { cmd = "steward benchmark plot", description = "Regenerate benchmark figures from the history" }
+benchmark-report = { cmd = "steward benchmark report", description = "Regenerate figures, docs/benchmarks.md, summary, and README section" }
+benchmark-status = { cmd = "steward benchmark status", description = "Show pending work and stale results" }
+prepare-sft-v3 = { cmd = "steward dataset prepare --input 'data/raw/multilingual/reviewed/*.jsonl' --input 'data/raw/fidelity/reviewed/*.jsonl' --config configs/sft/v3.toml --output data/sft/v3", description = "Build SFT set v3 (Milestone 4) from critiqued data" }
+dataset-report = { cmd = "steward dataset report --generated 'data/raw/fidelity/shard-*.jsonl' --generated 'data/raw/multilingual/shard-*.jsonl' --reviewed 'data/raw/fidelity/reviewed/*.jsonl' --reviewed 'data/raw/multilingual/reviewed/*.jsonl' --prepared data/sft/v3 --output-md docs/dataset-quality.md", description = "Write the data-quality report for data/sft/v3" }
+prepare-sft = { cmd = "steward dataset prepare --input 'data/raw/multilingual/repaired/*.jsonl' --config configs/sft/default.toml --output data/sft/v2", description = "Build the deterministic SFT train/validation split (data/sft/v2) from the repaired candidates" }
+install-git-hooks = { cmd = "git config core.hooksPath scripts/git-hooks", description = "Enable the pre-push benchmark-check fallback" }
 
 # ---------------------------------------------------------------------------
 # Dev feature: formatting, linting, type checking, testing.
@@ -25,6 +38,7 @@ ruff = "*"
 mypy = "*"
 pytest = "*"
 pytest-cov = "*"
+pandas-stubs = ">=3.1.0.261029,<4"
 
 [feature.dev.tasks]
 format = { cmd = "ruff format src tests && ruff check --fix --select I src tests", description = "Format code with Ruff" }
@@ -32,12 +46,15 @@ format-check = { cmd = "ruff format --check src tests", description = "Check for
 lint = { cmd = "ruff check src tests", description = "Lint with Ruff" }
 typecheck = { cmd = "mypy", description = "Type check with mypy (strict)" }
 test = { cmd = "pytest", description = "Run the CPU-only test suite" }
+test-ollama = { cmd = "pytest -m ollama tests/integration -v", description = "Opt-in live tests against a local Ollama server (set STEWARD_OLLAMA_MODEL)" }
 test-cov = { cmd = "pytest --cov=steward --cov-report=term-missing", description = "Run tests with coverage" }
-check = { depends-on = ["format-check", "lint", "typecheck", "test"], description = "Run all CI checks" }
+benchmark-verify = { cmd = "steward benchmark verify", description = "Verify history integrity, golden suites, and training data" }
+benchmark-check = { cmd = "steward benchmark verify --check-generated", description = "Verify history, golden suite, data, links, and generated figures/reports" }
+check = { depends-on = ["format-check", "lint", "typecheck", "test", "benchmark-check"], description = "Run all CI checks" }
 
 # ---------------------------------------------------------------------------
-# CUDA feature: GPU training stack (Linux only). Training is not implemented
-# yet; this environment exists so the GPU stack is pinned and reproducible.
+# CUDA feature: GPU training and local inference stack (Linux only):
+# PyTorch, Transformers, PEFT (LoRA), TRL (SFTTrainer), Accelerate, Datasets.
 # RTX 5090 (Blackwell, sm_120) needs CUDA >= 12.8.
 # ---------------------------------------------------------------------------
 [feature.cuda.system-requirements]
@@ -46,10 +63,58 @@ cuda = "12.8"
 [feature.cuda.dependencies]
 cuda-version = ">=12.8,<13"
 pytorch-gpu = ">=2.7"
+transformers = ">=5.0"
+peft = ">=0.17"
+trl = ">=1.0"
+accelerate = ">=1.0"
+datasets = ">=3.0"
+safetensors = ">=0.8.0,<0.9"
+huggingface_hub = ">=1.32.0,<2"
+cuda-driver-dev = ">=12.9.79,<13"
+cuda-cudart-dev = ">=12.9.79,<13"
+
+# llama.cpp's HF -> GGUF converter (MIT), for the Ollama export (Ollama cannot
+# import Qwen3 safetensors). It is not on conda-forge (the llama.cpp package has
+# no converter) or PyPI, so it is pinned to a release tag. Git (not a tarball)
+# keeps its bundled gguf-py reference portable in pixi.lock. Tag b12004 is needed:
+# older converters omit add_bos_token=false and NFC normalization for Qwen3.
+# The override replaces its transformers==4.57.6 pin (Qwen3 conversion tested with 5.22).
+[feature.cuda.pypi-dependencies]
+llama-cpp-scripts = { git = "https://github.com/ggml-org/llama.cpp", tag = "b12004" }
+gguf = { git = "https://github.com/ggml-org/llama.cpp", tag = "b12004", subdirectory = "gguf-py" }
+
+[feature.cuda.pypi-options]
+dependency-overrides = { transformers = ">=5" }
 
 [feature.cuda.tasks]
+train = { cmd = "steward train --config configs/training/qwen3-0.6b-lora.toml", description = "LoRA SFT of Qwen3-0.6B on data/sft/v1 (GPU; never runs automatically)" }
+ste = { cmd = "steward ste", description = "STE-only inference with the output guard (latest run by default): pixi run -e cuda ste 'text' [--model runs/<id>]" }
+benchmark-gpu = { cmd = "steward benchmark run --require-gpu", description = "Benchmark candidates and fail if no GPU is visible" }
+evaluate = { cmd = "steward evaluate --require-gpu --baseline --model", description = "Benchmark a trained run and its untuned baseline: pixi run -e cuda evaluate runs/<id>" }
+infer = { cmd = "steward generate --model", description = "STE-only inference: pixi run -e cuda infer runs/<id> --input 'text'" }
+train-sweep = { cmd = "steward train-sweep --sweep configs/training/sweeps/m4-v0.2.toml", description = "Train the Milestone 4 sweep trials A, B, C (GPU; never automatic)" }
+sweep-select = { cmd = "steward sweep-select --require-gpu --sweep configs/training/sweeps/m4-v0.2.toml", description = "Evaluate sweep trials on the development suite and select one" }
+test-gpu = { cmd = "pytest -m gpu -v", description = "Opt-in GPU tests (real Qwen3 tokenizer, adapter reload)" }
+export-ollama = { cmd = "steward export-ollama {{ run }} --output runs/ollama-export", args = [{ arg = "run", default = "latest" }], description = "Merge a LoRA run (default: latest) into runs/ollama-export with an Ollama Modelfile" }
 cuda-info = { cmd = "python -c \"import torch; print('torch', torch.__version__, 'cuda', torch.version.cuda, 'available', torch.cuda.is_available()); print(torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'no GPU')\"", description = "Report the PyTorch/CUDA setup" }
+
+# ---------------------------------------------------------------------------
+# Ollama feature: a local teacher-model server for synthetic-data generation.
+# Uses the conda-forge CUDA build. Start it in its own terminal.
+# ---------------------------------------------------------------------------
+[feature.ollama.system-requirements]
+cuda = "12.8"
+
+[feature.ollama.dependencies]
+ollama = { version = "*", build = "cuda*" }
+
+[feature.ollama.tasks]
+ollama-serve = { cmd = "ollama serve", description = "Start a local Ollama server on port 11434" }
+ollama-pull = { cmd = "ollama pull", description = "Download a model: pixi run -e ollama ollama-pull <model>" }
+ollama-create = { cmd = "ollama create {{ name }} -f runs/ollama-export/Modelfile", args = [{ arg = "run", default = "latest" }, { arg = "name", default = "steward-ste" }], depends-on = [{ task = "export-ollama", environment = "cuda", args = ["{{ run }}"] }], description = "Export a run (default: latest) and import it into the running Ollama server: pixi run ollama-create [runs/<id>] [name]" }
+ollama-chat = { cmd = "ollama run {{ name }}", args = [{ arg = "name", default = "steward-ste" }], description = "Chat with the imported model (each message is converted on its own; no output guard)" }
 
 [environments]
 default = { features = ["dev"], solve-group = "default" }
 cuda = { features = ["dev", "cuda"], solve-group = "cuda" }
+ollama = { features = ["ollama"], no-default-feature = true }

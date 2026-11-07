@@ -19,5 +19,5 @@ jobs:
           locked: true
       - name: Check lockfile is up to date
         run: pixi lock --check
-      - name: Run checks
+      - name: Format, lint, type check, tests, benchmark verification
         run: pixi run check
