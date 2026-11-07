@@ -80,8 +80,8 @@ cuda-cudart-dev = ">=12.9.79,<13"
 # older converters omit add_bos_token=false and NFC normalization for Qwen3.
 # The override replaces its transformers==4.57.6 pin (Qwen3 conversion tested with 5.22).
 [feature.cuda.pypi-dependencies]
-llama-cpp-scripts = { git = "https://github.com/ggml-org/llama.cpp", tag = "b12004" }
-gguf = { git = "https://github.com/ggml-org/llama.cpp", tag = "b12004", subdirectory = "gguf-py" }
+llama-cpp-scripts = { git = "https://github.com/ggml-org/llama.cpp", rev = "3c809f44383bcebc318b8cddd8c6d11aaa861e9b" }  # tag b12004
+gguf = { git = "https://github.com/ggml-org/llama.cpp", rev = "3c809f44383bcebc318b8cddd8c6d11aaa861e9b", subdirectory = "gguf-py" }  # tag b12004
 
 [feature.cuda.pypi-options]
 dependency-overrides = { transformers = ">=5" }

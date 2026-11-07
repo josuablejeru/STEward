@@ -299,8 +299,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2026e-h5d301ff_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/wordfreq-3.1.1-pyhd8ed1ab_0.conda
       - pypi: .
-      - pypi: git+https://github.com/ggml-org/llama.cpp?subdirectory=gguf-py&tag=b12004#3c809f44383bcebc318b8cddd8c6d11aaa861e9b
-      - pypi: git+https://github.com/ggml-org/llama.cpp?tag=b12004#3c809f44383bcebc318b8cddd8c6d11aaa861e9b
+      - pypi: git+https://github.com/ggml-org/llama.cpp?rev=3c809f44383bcebc318b8cddd8c6d11aaa861e9b#3c809f44383bcebc318b8cddd8c6d11aaa861e9b
+      - pypi: git+https://github.com/ggml-org/llama.cpp?subdirectory=gguf-py&rev=3c809f44383bcebc318b8cddd8c6d11aaa861e9b#3c809f44383bcebc318b8cddd8c6d11aaa861e9b
       - pypi: https://files.pythonhosted.org/packages/51/72/42952e5b9f254aa2952c04360b38ed614ca4f5600ee2b0cf8e1c0f6661c5/sentencepiece-0.2.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/7f/c5/38806a25ab5e65fc178f39affeda20858efafede2fce1ffc2556cfc9fe73/charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl
@@ -5366,7 +5366,20 @@ packages:
   - pydantic>=2.8
   - httpx>=0.27
   requires_python: '>=3.12'
-- pypi: git+https://github.com/ggml-org/llama.cpp?subdirectory=gguf-py&tag=b12004#3c809f44383bcebc318b8cddd8c6d11aaa861e9b
+- pypi: git+https://github.com/ggml-org/llama.cpp?rev=3c809f44383bcebc318b8cddd8c6d11aaa861e9b#3c809f44383bcebc318b8cddd8c6d11aaa861e9b
+  name: llama-cpp-scripts
+  version: 0.0.0
+  requires_dist:
+  - gguf @ git+https://github.com/ggml-org/llama.cpp@3c809f44383bcebc318b8cddd8c6d11aaa861e9b#subdirectory=gguf-py
+  - numpy>=2.2.6,<3.0.0 ; python_full_version < '3.14'
+  - numpy>=2.3.0,<3.0.0 ; python_full_version >= '3.14'
+  - protobuf>=4.21.0,<5.0.0
+  - sentencepiece>=0.1.98,<0.3.0
+  - torch>=2.6.0,<3.0.0 ; sys_platform == 'linux'
+  - torch>=2.6.0,<3.0.0 ; sys_platform != 'linux'
+  - transformers==4.57.6
+  requires_python: '>=3.10,<3.15'
+- pypi: git+https://github.com/ggml-org/llama.cpp?subdirectory=gguf-py&rev=3c809f44383bcebc318b8cddd8c6d11aaa861e9b#3c809f44383bcebc318b8cddd8c6d11aaa861e9b
   name: gguf
   version: 0.19.0
   requires_dist:
@@ -5377,19 +5390,6 @@ packages:
   - requests>=2.25
   - pyside6>=6.9,<7.0 ; python_full_version >= '3.9' and python_full_version < '3.14' and extra == 'gui'
   requires_python: '>=3.10'
-- pypi: git+https://github.com/ggml-org/llama.cpp?tag=b12004#3c809f44383bcebc318b8cddd8c6d11aaa861e9b
-  name: llama-cpp-scripts
-  version: 0.0.0
-  requires_dist:
-  - gguf @ git+https://github.com/ggml-org/llama.cpp@b12004#subdirectory=gguf-py
-  - numpy>=2.2.6,<3.0.0 ; python_full_version < '3.14'
-  - numpy>=2.3.0,<3.0.0 ; python_full_version >= '3.14'
-  - protobuf>=4.21.0,<5.0.0
-  - sentencepiece>=0.1.98,<0.3.0
-  - torch>=2.6.0,<3.0.0 ; sys_platform == 'linux'
-  - torch>=2.6.0,<3.0.0 ; sys_platform != 'linux'
-  - transformers==4.57.6
-  requires_python: '>=3.10,<3.15'
 - pypi: https://files.pythonhosted.org/packages/51/72/42952e5b9f254aa2952c04360b38ed614ca4f5600ee2b0cf8e1c0f6661c5/sentencepiece-0.2.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
   name: sentencepiece
   version: 0.2.3
