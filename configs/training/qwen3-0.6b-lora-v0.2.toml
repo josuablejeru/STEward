@@ -1,0 +1,43 @@
+# STEward-0.6B v0.2 base config (Milestone 4). The sweep in configs/training/sweeps/
+# m4-v0.2.toml overrides only the values of each trial. Reference values are those of v0.1.
+# Run with: pixi run -e cuda train   (never started automatically)
+run_name = "qwen3-0.6b-ste-lora-v0.2"
+version_label = "steward-0.6b-v0.2"
+base_model = "Qwen/Qwen3-0.6B"
+# Pinned Hugging Face commit (Apache-2.0 model card at this revision).
+base_revision = "c1899de289a04d12100db370d81485cdf75e47ca"
+dataset_dir = "data/sft/v3"
+output_root = "runs"
+seed = 42
+# Label for reports: "pipeline-validation" when the dataset is very small.
+label = "experimental"
+# Benchmark this adapter on the STE-only suite after training.
+eval_suite = "ste-multilingual-v1"
+
+[lora]
+r = 16
+alpha = 32
+dropout = 0.05
+target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+
+[train]
+epochs = 3
+learning_rate = 2e-4
+lr_scheduler = "cosine"
+warmup_ratio = 0.05
+weight_decay = 0.0
+# Milestone 3 brief: batch 4 x gradient accumulation 4 (effective 16), max length 1024.
+# The first run (runs/qwen3-0.6b-ste-lora-20261106T193155Z) used 8 x 2 and 1536 on data/sft/v1.
+per_device_batch_size = 4
+gradient_accumulation_steps = 4
+max_length = 1024
+logging_steps = 5
+eval_steps = 10
+save_steps = 10
+save_total_limit = 3
+gradient_checkpointing = false
+# Milestone 4: keep the checkpoint with the lowest validation loss, and stop when the
+# validation loss has not improved for 4 evaluations (40 steps).
+select_best = true
+metric_for_best = "eval_loss"
+early_stopping_patience = 4

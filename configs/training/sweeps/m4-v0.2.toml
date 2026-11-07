@@ -1,0 +1,25 @@
+# Milestone 4 hyperparameter sweep: three controlled trials on the same data and split.
+# Run:     pixi run -e cuda train-sweep
+# Select:  pixi run -e cuda sweep-select   (development suite, never the golden suite)
+sweep_id = "m4-v0.2"
+base_config = "configs/training/qwen3-0.6b-lora-v0.2.toml"
+selection_suite = "ste-fidelity-dev-v0"
+description = "Learning rate, LoRA rank, and epochs around the v0.1 reference (lr 2e-4, r 16, 3 epochs)."
+
+[[trial]]
+name = "A"
+description = "v0.1 learning rate and rank, 2 epochs (v0.1 overfitted in epoch 3)."
+train = { learning_rate = 2e-4, epochs = 2 }
+lora = { r = 16, alpha = 32 }
+
+[[trial]]
+name = "B"
+description = "Half the learning rate, 3 epochs."
+train = { learning_rate = 1e-4, epochs = 3 }
+lora = { r = 16, alpha = 32 }
+
+[[trial]]
+name = "C"
+description = "Half the learning rate, rank 32 (alpha 64 keeps alpha/r = 2), 3 epochs."
+train = { learning_rate = 1e-4, epochs = 3 }
+lora = { r = 32, alpha = 64 }
