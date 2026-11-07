@@ -1,0 +1,44 @@
+# Opt-in GPU benchmarks on a self-hosted runner with an NVIDIA GPU and Ollama.
+# Runs only when started by hand. Results are uploaded as an artifact for
+# review; they are not committed automatically.
+name: GPU benchmark (self-hosted, manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      candidate:
+        description: "Candidate ID from benchmarks/models.toml (empty = all pending)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  gpu-benchmark:
+    runs-on: [self-hosted, linux, gpu]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: prefix-dev/setup-pixi@v0.9.1
+        with:
+          environments: cuda
+          locked: true
+      - name: Run benchmarks
+        env:
+          CANDIDATE: ${{ inputs.candidate }}
+        run: |
+          if [ -n "$CANDIDATE" ]; then
+            pixi run -e cuda benchmark-gpu --candidate "$CANDIDATE"
+          else
+            pixi run -e cuda benchmark-gpu
+          fi
+      - name: Verify results
+        run: pixi run -e cuda steward benchmark verify --check-generated
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gpu-benchmark-results
+          path: |
+            benchmarks/results/
+            benchmarks/figures/
+            docs/benchmarks.md

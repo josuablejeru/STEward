@@ -1,0 +1,4 @@
+#!/bin/sh
+# Fallback for changes made outside Claude Code.
+# Enable with: pixi run install-git-hooks
+exec pixi run --frozen benchmark-check

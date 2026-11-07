@@ -1,0 +1,115 @@
+# Benchmark candidates. Each entry is one (model, prompt, role) combination.
+#
+# role:
+#   base       untuned model with the minimal prompt (baseline 1)
+#   prompted   untuned model with the full STE guidance prompt
+#   finetuned  STEward fine-tuned checkpoint (served for evaluation)
+#   quantized  quantized export of a finetuned checkpoint
+#   release    a published STEward release (set release_version)
+#
+# parameter_count is read from the provider when not given here.
+#
+# suite: directory under benchmarks/golden/ (default ste-golden-v0, the JSON
+# rewrite contract). primary_suite is used for model selection and the README.
+
+primary_suite = "ste-multilingual-v1"
+
+[[candidates]]
+id = "qwen3-1.7b-base"
+role = "base"
+provider = "ollama"
+model = "qwen3:1.7b"
+base_model = "Qwen/Qwen3-1.7B"
+prompt = "benchmark_minimal@1"
+think = false
+
+[[candidates]]
+id = "qwen3-1.7b-prompted"
+role = "prompted"
+provider = "ollama"
+model = "qwen3:1.7b"
+base_model = "Qwen/Qwen3-1.7B"
+prompt = "ste_rewrite@1"
+think = false
+
+[[candidates]]
+id = "qwen3-4b-base"
+role = "base"
+provider = "ollama"
+model = "qwen3:4b"
+base_model = "Qwen/Qwen3-4B"
+prompt = "benchmark_minimal@1"
+think = false
+
+[[candidates]]
+id = "qwen3-4b-prompted"
+role = "prompted"
+provider = "ollama"
+model = "qwen3:4b"
+base_model = "Qwen/Qwen3-4B"
+prompt = "ste_rewrite@1"
+think = false
+
+[[candidates]]
+id = "qwen3-8b-base"
+role = "base"
+provider = "ollama"
+model = "qwen3:8b"
+base_model = "Qwen/Qwen3-8B"
+prompt = "benchmark_minimal@1"
+think = false
+
+[[candidates]]
+id = "qwen3-8b-prompted"
+role = "prompted"
+provider = "ollama"
+model = "qwen3:8b"
+base_model = "Qwen/Qwen3-8B"
+prompt = "ste_rewrite@1"
+think = false
+
+# --- STE-only multilingual suite (contract ste_only_text, prompt ste_only@1) ---
+
+[[candidates]]
+id = "qwen3-0.6b-untuned"
+role = "base"
+provider = "transformers"
+model = "Qwen/Qwen3-0.6B"
+base_model = "Qwen/Qwen3-0.6B"
+base_revision = "c1899de289a04d12100db370d81485cdf75e47ca"
+prompt = "ste_only@1"
+think = false
+suite = "ste-multilingual-v1"
+notes = "Untuned student with the same STE-only prompt and decoding as the fine-tuned adapter."
+
+[[candidates]]
+id = "qwen3-1.7b-ste-only"
+role = "prompted"
+provider = "ollama"
+model = "qwen3:1.7b"
+base_model = "Qwen/Qwen3-1.7B"
+prompt = "ste_only@1"
+think = false
+suite = "ste-multilingual-v1"
+
+[[candidates]]
+id = "qwen3-4b-ste-only"
+role = "prompted"
+provider = "ollama"
+model = "qwen3:4b"
+base_model = "Qwen/Qwen3-4B"
+prompt = "ste_only@1"
+think = false
+suite = "ste-multilingual-v1"
+notes = "Ollama build 359d7dd4 does not honor think=false in plain-text mode: every output hits max_tokens with empty visible text. Its STE-only result (bench-576431eca202a4c9) measures that setup, not STE ability."
+
+[[candidates]]
+id = "qwen3-8b-ste-only"
+role = "prompted"
+provider = "ollama"
+model = "qwen3:8b"
+base_model = "Qwen/Qwen3-8B"
+prompt = "ste_only@1"
+think = false
+suite = "ste-multilingual-v1"
+notes = "Also the teacher model for the training data: not an independent comparison."

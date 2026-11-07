@@ -1,0 +1,52 @@
+# Validates stored benchmark results and regenerates figures when they change.
+# Never runs training or model benchmarks (no GPU on GitHub-hosted runners).
+name: Benchmarks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "benchmarks/**"
+      - "docs/**"
+      - "README.md"
+      - "src/steward/evaluation/**"
+      - "src/steward/ste/**"
+      - "configs/ste/**"
+  pull_request:
+    paths:
+      - "benchmarks/**"
+      - "docs/**"
+      - "README.md"
+      - "src/steward/evaluation/**"
+      - "src/steward/ste/**"
+      - "configs/ste/**"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: prefix-dev/setup-pixi@v0.9.1
+        with:
+          environments: default
+          locked: true
+      - name: Validate schemas, hash chain, reproducibility metadata, golden suite, links
+        run: pixi run steward benchmark verify
+      - name: Regenerate figures and reports
+        run: pixi run benchmark-report
+      - name: Fail on unexpected changes in generated charts or reports
+        run: |
+          if ! git diff --quiet -- benchmarks/figures docs/benchmarks.md benchmarks/results/summary.json README.md; then
+            echo "::error::Generated benchmark outputs differ from the committed files. Run 'pixi run benchmark-report' and commit the result."
+            git diff --stat -- benchmarks/figures docs/benchmarks.md benchmarks/results/summary.json README.md
+            exit 1
+          fi
+      - name: Upload regenerated figures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-figures
+          path: benchmarks/figures/

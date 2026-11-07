@@ -1,0 +1,56 @@
+# Regression thresholds and model-selection requirements.
+# Changes here change comparisons, not stored results.
+version = 1
+
+# A change larger than the limit is a regression. "significant" is also
+# reported when the 95% confidence intervals do not overlap.
+[regression]
+ste_rule_pass_rate = { max_drop = 0.05 }
+grammar_violations_per_100_words = { max_increase = 0.5 }
+meaning_preservation = { max_drop = 0.03 }
+hallucination_rate = { max_increase = 0.0 }
+missing_information_rate = { max_increase = 0.05 }
+latency_mean_s = { max_increase_ratio = 0.25 }
+# A larger model must improve ste_rule_pass_rate by at least this much.
+disk_size_bytes = { max_increase_ratio = 0.10, min_quality_gain = 0.03 }
+# STE-only contract metrics (only present for ste_only_text suites).
+ste_only_output_rate = { max_drop = 0.02 }
+non_english_output_rate = { max_increase = 0.0 }
+extra_commentary_rate = { max_increase = 0.0 }
+controlled_failure_reliability = { max_drop = 0.1 }
+chrf_mean = { max_drop = 2.0 }
+# Milestone 4 technical-fidelity metrics: any increase in errors is a regression.
+technical_error_rate = { max_increase = 0.0 }
+critical_failures = { max_increase = 0.0 }
+negation_preservation = { max_drop = 0.0 }
+safety_label_preservation = { max_drop = 0.0 }
+terminology_preservation = { max_drop = 0.0 }
+unsupported_addition_rate = { max_increase = 0.0 }
+
+# The selected model is the smallest candidate that meets all of these.
+[selection]
+min_ste_rule_pass_rate = 0.80
+min_meaning_preservation = 0.95
+max_hallucination_rate = 0.0
+max_missing_information_rate = 0.10
+max_critical_failures = 0
+min_task_completion_rate = 1.0
+
+# Selection requirements for the STE-only multilingual suite (suite ID
+# "ste-multilingual"). Order of priority: technical correctness and safety,
+# STE-only behavior, language rules, meaning; only then size and speed.
+[selection_by_suite.ste-multilingual]
+critical_failures = { max = 0 }
+hallucination_rate = { max = 0.0 }
+meaning_preservation = { min = 0.95 }
+missing_information_rate = { max = 0.10 }
+ste_only_output_rate = { min = 0.98 }
+non_english_output_rate = { max = 0.0 }
+extra_commentary_rate = { max = 0.0 }
+controlled_failure_reliability = { min = 0.9 }
+false_refusal_rate = { max = 0.05 }
+ste_rule_pass_rate = { min = 0.80 }
+unnecessary_rewrite_rate = { max = 0.2 }
+technical_error_rate = { max = 0.05 }
+safety_label_preservation = { min = 1.0 }
+negation_preservation = { min = 1.0 }

@@ -1,0 +1,31 @@
+# STE-only multilingual golden suite. FROZEN: never edit items.jsonl in place.
+# To change the suite, create ste-multilingual-v1 with a new version.
+# These items must never be used as training data or teacher prompt material.
+id = "ste-multilingual"
+version = 0
+review_state = "draft"   # draft | human_reviewed
+author = "Drafted by Claude (claude-opus-5-5) for STEward on 2026-11-06, including the German, French, and Romanian sources and all reference texts. Not yet reviewed by a human or a native speaker."
+description = """
+Forty original, fictional items for the STE-only contract: 8 English rewrites,
+5 German, 5 French, and 5 Romanian translations, 6 structured-requirements
+items (English, German, French, Romanian), 5 texts that are already
+STE-oriented (identity), and 6 out-of-domain requests that must return the
+controlled failure. Reference texts are draft STE-oriented English written by
+the suite author; they are used only for the chrF proxy. All values and parts
+are invented.
+"""
+items_file = "items.jsonl"
+items_sha256 = "917530e119ed4a4f55ef73c8d0e685977bc2480696ac30f5a6f43b85d94c52f5"
+item_count = 40
+contract = "ste_only_text"
+
+[sampling]
+# Greedy decoding for comparability between models.
+temperature = 0.0
+top_p = 1.0
+seed = 1234
+max_tokens = 768
+
+[repair]
+# The STE-only contract has no repair turns: the first output is scored.
+max_repair_attempts = 0

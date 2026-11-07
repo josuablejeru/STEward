@@ -1,0 +1,29 @@
+# DEVELOPMENT suite for targeted error analysis and hyperparameter selection (Milestone 4).
+# Use it to compare tuning trials. The frozen ste-multilingual-v1 suite is used only for
+# the final comparison of selected candidates. FROZEN: create -v1 to change items.
+# These items must never be used as training data or teacher prompt material.
+id = "ste-fidelity-dev"
+version = 0
+review_state = "draft"   # draft | human_reviewed
+author = "Drafted by Claude (claude-opus-5-5) for STEward on 2026-11-07, including the German, French, and Romanian sources and all reference texts. Not yet reviewed by a human or a native speaker."
+description = """
+Thirty original, fictional development items aimed at the Milestone 3 failure modes:
+context-dependent technical terms (Mutter, Dichtung, lösen, Schlüssel, écrou, à mains
+nues, panou, șurub, piuliță), WARNING/CAUTION/NOTE labels, prohibitions and conditions
+(never, unless, only when, while, after), 7 German, 6 French, and 6 Romanian items,
+4 English rewrites, 4 identity items (one numbered list), and 3 out-of-domain requests.
+Purpose: development and tuning only; not the final comparison suite.
+"""
+items_file = "items.jsonl"
+items_sha256 = "9df638080b93c6273f88f9205d67c586d0c9b435d2e273eb04f710502d4e75b4"
+item_count = 30
+contract = "ste_only_text"
+
+[sampling]
+temperature = 0.0
+top_p = 1.0
+seed = 1234
+max_tokens = 768
+
+[repair]
+max_repair_attempts = 0

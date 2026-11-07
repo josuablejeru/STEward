@@ -1,0 +1,22 @@
+# Minimal instruction used for the "untuned base model" baseline.
+# Never edit a published version.
+id = "benchmark_minimal"
+version = 1
+description = "Minimal STE rewrite instruction without STE guidance (baseline)."
+variables = ["category", "source_text"]
+
+system = """
+Rewrite the text in Simplified Technical English. Return only JSON that matches the requested schema.
+"""
+
+user = """
+Text category: $category
+
+Input text:
+<<<
+$source_text
+>>>
+
+Return a JSON object with:
+- "ste_text": the rewritten text.
+"""

@@ -1,0 +1,27 @@
+# Golden benchmark suite. FROZEN: never edit items.jsonl in place.
+# To change the suite, create a new directory (ste-golden-v1) and a new version.
+# These items must never be used as training data or teacher prompt material.
+id = "ste-golden"
+version = 0
+review_state = "draft"   # draft | human_reviewed
+author = "Drafted by Claude (claude-opus-5-5) for STEward on 2026-11-06. Not yet reviewed by a human."
+description = """
+Sixteen original, fictional plain-English maintenance passages (four per
+category) with key terms that a rewrite must keep. All values and parts are
+invented. A human reviewer must check the items and set review_state to
+human_reviewed in a new suite version before results are used for releases.
+"""
+items_file = "items.jsonl"
+items_sha256 = "6a319186c761ab12225b7365b879a94257c59851b9676c4a8f7d57a8e69f7995"
+item_count = 16
+
+[sampling]
+# Greedy decoding for comparability between models.
+temperature = 0.0
+top_p = 1.0
+seed = 1234
+max_tokens = 1024
+
+[repair]
+# Extra attempts when the output is not valid JSON for the response schema.
+max_repair_attempts = 2

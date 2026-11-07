@@ -1,0 +1,1378 @@
+{
+  "candidates": {
+    "ft-qwen3-0.6b-ste-lora-20261106t221211z": {
+      "created_at": "2026-11-07T01:20:52.066201+00:00",
+      "experiment_id": "bench-9e247223b5d69ee7",
+      "meets_requirements": false,
+      "metrics": {
+        "adapter_size_bytes": 40422168.0,
+        "chrf_mean": 63.363,
+        "controlled_failure_reliability": 0.9,
+        "critical_failures": 11.0,
+        "critical_technical_errors": 10.0,
+        "disk_size_bytes": 1543722496.0,
+        "extra_commentary_rate": 0.0,
+        "false_refusal_rate": 0.0,
+        "gpu_peak_memory_mib": 3534.0,
+        "grammar_violations_per_100_words": 3.6504,
+        "guard_pass_rate": 0.7058823529411765,
+        "hallucination_rate": 0.08823529411764706,
+        "identity_edit_similarity": 0.9382,
+        "instruction_structure_violations_per_100_words": null,
+        "invalid_output_rate": 0.0,
+        "latency_mean_s": 0.40634545454545457,
+        "latency_p90_s": 0.6294200000000002,
+        "meaning_preservation": 0.8824,
+        "missing_information_rate": 0.4117647058823529,
+        "model_vram_mib": 1199.0,
+        "negation_preservation": 0.8461538461538461,
+        "non_english_output_rate": 0.0,
+        "numerical_accuracy": 1.0,
+        "output_words_mean": 26.58823529411765,
+        "output_words_p50": 25.0,
+        "output_words_p90": 35.7,
+        "parameter_count": 596049920.0,
+        "repair_attempts": 0.0,
+        "repair_success_rate": null,
+        "repetition_rate": 0.0,
+        "safety_label_preservation": 0.75,
+        "sentence_length_violations_per_100_words": 0.2212,
+        "sequence_preservation": 1.0,
+        "source_leakage_rate": 0.10526315789473684,
+        "ste_only_output_rate": 1.0,
+        "ste_rule_pass_rate": 0.8235294117647058,
+        "task_completion_rate": 1.0,
+        "technical_error_rate": 0.29411764705882354,
+        "terminology_accuracy": 0.6666666666666666,
+        "terminology_preservation": 0.9411764705882353,
+        "tokens_per_s": 74.78,
+        "unnecessary_rewrite_rate": 0.4,
+        "unsupported_addition_rate": 0.08823529411764706,
+        "violations_per_100_words": 3.8717,
+        "vocabulary_compliance": null
+      },
+      "parameter_count": 596049920,
+      "requirement_failures": [
+        "critical_failures = 11.000 (max 0.0)",
+        "hallucination_rate = 0.088 (max 0.0)",
+        "meaning_preservation = 0.882 (min 0.95)",
+        "missing_information_rate = 0.412 (max 0.1)",
+        "unnecessary_rewrite_rate = 0.400 (max 0.2)",
+        "technical_error_rate = 0.294 (max 0.05)",
+        "safety_label_preservation = 0.750 (min 1.0)",
+        "negation_preservation = 0.846 (min 1.0)"
+      ],
+      "role": "finetuned"
+    },
+    "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z": {
+      "created_at": "2026-11-07T01:22:35.587150+00:00",
+      "experiment_id": "bench-4c91611139324da8",
+      "meets_requirements": false,
+      "metrics": {
+        "adapter_size_bytes": 80792456.0,
+        "chrf_mean": 65.117,
+        "controlled_failure_reliability": 1.0,
+        "critical_failures": 6.0,
+        "critical_technical_errors": 6.0,
+        "disk_size_bytes": 1584092784.0,
+        "extra_commentary_rate": 0.0,
+        "false_refusal_rate": 0.0,
+        "gpu_peak_memory_mib": 3569.0,
+        "grammar_violations_per_100_words": 3.5165,
+        "guard_pass_rate": 0.8235294117647058,
+        "hallucination_rate": 0.058823529411764705,
+        "identity_edit_similarity": 0.981,
+        "instruction_structure_violations_per_100_words": null,
+        "invalid_output_rate": 0.0,
+        "latency_mean_s": 0.4180431818181818,
+        "latency_p90_s": 0.6662100000000001,
+        "meaning_preservation": 0.9,
+        "missing_information_rate": 0.29411764705882354,
+        "model_vram_mib": 1199.0,
+        "negation_preservation": 1.0,
+        "non_english_output_rate": 0.0,
+        "numerical_accuracy": 0.9705882352941176,
+        "output_words_mean": 26.764705882352942,
+        "output_words_p50": 26.5,
+        "output_words_p90": 35.7,
+        "parameter_count": 596049920.0,
+        "repair_attempts": 0.0,
+        "repair_success_rate": null,
+        "repetition_rate": 0.0,
+        "safety_label_preservation": 0.8333333333333334,
+        "sentence_length_violations_per_100_words": 0.2198,
+        "sequence_preservation": 1.0,
+        "source_leakage_rate": 0.05263157894736842,
+        "ste_only_output_rate": 1.0,
+        "ste_rule_pass_rate": 0.8529411764705882,
+        "task_completion_rate": 1.0,
+        "technical_error_rate": 0.17647058823529413,
+        "terminology_accuracy": 0.6666666666666666,
+        "terminology_preservation": 0.9411764705882353,
+        "tokens_per_s": 73.01,
+        "unnecessary_rewrite_rate": 0.2,
+        "unsupported_addition_rate": 0.058823529411764705,
+        "violations_per_100_words": 3.7363,
+        "vocabulary_compliance": null
+      },
+      "parameter_count": 596049920,
+      "requirement_failures": [
+        "critical_failures = 6.000 (max 0.0)",
+        "hallucination_rate = 0.059 (max 0.0)",
+        "meaning_preservation = 0.900 (min 0.95)",
+        "missing_information_rate = 0.294 (max 0.1)",
+        "technical_error_rate = 0.176 (max 0.05)",
+        "safety_label_preservation = 0.833 (min 1.0)"
+      ],
+      "role": "finetuned"
+    },
+    "qwen3-0.6b-untuned": {
+      "created_at": "2026-11-07T01:19:09.923854+00:00",
+      "experiment_id": "bench-c1cd7db36c36881d",
+      "meets_requirements": false,
+      "metrics": {
+        "chrf_mean": 44.3295,
+        "controlled_failure_reliability": 0.8,
+        "critical_failures": 9.0,
+        "critical_technical_errors": 18.0,
+        "disk_size_bytes": 1503300328.0,
+        "extra_commentary_rate": 0.0,
+        "false_refusal_rate": 0.14705882352941177,
+        "gpu_peak_memory_mib": 3542.0,
+        "grammar_violations_per_100_words": 5.0119,
+        "guard_pass_rate": 0.47058823529411764,
+        "hallucination_rate": 0.0,
+        "identity_edit_similarity": 0.928,
+        "instruction_structure_violations_per_100_words": null,
+        "invalid_output_rate": 0.0,
+        "latency_mean_s": 0.43368636363636365,
+        "latency_p90_s": 0.7252700000000001,
+        "meaning_preservation": 0.6,
+        "missing_information_rate": 0.5294117647058824,
+        "model_vram_mib": 1202.0,
+        "negation_preservation": 0.6666666666666666,
+        "non_english_output_rate": 0.27586206896551724,
+        "numerical_accuracy": 1.0,
+        "output_words_mean": 24.647058823529413,
+        "output_words_p50": 25.5,
+        "output_words_p90": 40.0,
+        "parameter_count": 596049920.0,
+        "repair_attempts": 0.0,
+        "repair_success_rate": null,
+        "repetition_rate": 0.0,
+        "safety_label_preservation": 0.3,
+        "sentence_length_violations_per_100_words": 1.1933,
+        "sequence_preservation": 1.0,
+        "source_leakage_rate": 0.6666666666666666,
+        "ste_only_output_rate": 0.6176470588235294,
+        "ste_rule_pass_rate": 0.29411764705882354,
+        "task_completion_rate": 1.0,
+        "technical_error_rate": 0.5294117647058824,
+        "terminology_accuracy": 0.6666666666666666,
+        "terminology_preservation": 1.0,
+        "tokens_per_s": 73.94,
+        "unnecessary_rewrite_rate": 0.2,
+        "unsupported_addition_rate": 0.0,
+        "violations_per_100_words": 6.2053,
+        "vocabulary_compliance": null
+      },
+      "parameter_count": 596049920,
+      "requirement_failures": [
+        "critical_failures = 9.000 (max 0.0)",
+        "meaning_preservation = 0.600 (min 0.95)",
+        "missing_information_rate = 0.529 (max 0.1)",
+        "ste_only_output_rate = 0.618 (min 0.98)",
+        "non_english_output_rate = 0.276 (max 0.0)",
+        "controlled_failure_reliability = 0.800 (min 0.9)",
+        "false_refusal_rate = 0.147 (max 0.05)",
+        "ste_rule_pass_rate = 0.294 (min 0.8)",
+        "technical_error_rate = 0.529 (max 0.05)",
+        "safety_label_preservation = 0.300 (min 1.0)",
+        "negation_preservation = 0.667 (min 1.0)"
+      ],
+      "role": "base"
+    },
+    "qwen3-1.7b-ste-only": {
+      "created_at": "2026-11-07T01:03:48.546844+00:00",
+      "experiment_id": "bench-7fb70ca6e6f55f89",
+      "meets_requirements": false,
+      "metrics": {
+        "chrf_mean": 58.7183,
+        "controlled_failure_reliability": 0.7,
+        "critical_failures": 7.0,
+        "critical_technical_errors": 10.0,
+        "disk_size_bytes": 1359293444.0,
+        "extra_commentary_rate": 0.0,
+        "false_refusal_rate": 0.0,
+        "gpu_peak_memory_mib": 24171.0,
+        "grammar_violations_per_100_words": 4.6973,
+        "guard_pass_rate": 0.7058823529411765,
+        "hallucination_rate": 0.0,
+        "identity_edit_similarity": 1.0,
+        "instruction_structure_violations_per_100_words": null,
+        "invalid_output_rate": 0.0,
+        "latency_mean_s": 0.2832363636363637,
+        "latency_p90_s": 0.17631000000000002,
+        "meaning_preservation": 0.8294,
+        "missing_information_rate": 0.3235294117647059,
+        "model_vram_mib": 5078.0,
+        "negation_preservation": 0.8461538461538461,
+        "non_english_output_rate": 0.11764705882352941,
+        "numerical_accuracy": 0.9705882352941176,
+        "output_words_mean": 28.176470588235293,
+        "output_words_p50": 26.0,
+        "output_words_p90": 41.8,
+        "parameter_count": 2000000000.0,
+        "repair_attempts": 0.0,
+        "repair_success_rate": null,
+        "repetition_rate": 0.0,
+        "safety_label_preservation": 0.4166666666666667,
+        "sentence_length_violations_per_100_words": 1.0438,
+        "sequence_preservation": 1.0,
+        "source_leakage_rate": 0.47368421052631576,
+        "ste_only_output_rate": 0.8823529411764706,
+        "ste_rule_pass_rate": 0.5,
+        "task_completion_rate": 1.0,
+        "technical_error_rate": 0.29411764705882354,
+        "terminology_accuracy": 1.0,
+        "terminology_preservation": 1.0,
+        "tokens_per_s": 503.87,
+        "unnecessary_rewrite_rate": 0.0,
+        "unsupported_addition_rate": 0.0,
+        "violations_per_100_words": 5.7411,
+        "vocabulary_compliance": null
+      },
+      "parameter_count": 2000000000,
+      "requirement_failures": [
+        "critical_failures = 7.000 (max 0.0)",
+        "meaning_preservation = 0.829 (min 0.95)",
+        "missing_information_rate = 0.324 (max 0.1)",
+        "ste_only_output_rate = 0.882 (min 0.98)",
+        "non_english_output_rate = 0.118 (max 0.0)",
+        "controlled_failure_reliability = 0.700 (min 0.9)",
+        "ste_rule_pass_rate = 0.500 (min 0.8)",
+        "technical_error_rate = 0.294 (max 0.05)",
+        "safety_label_preservation = 0.417 (min 1.0)",
+        "negation_preservation = 0.846 (min 1.0)"
+      ],
+      "role": "prompted"
+    },
+    "qwen3-4b-ste-only": {
+      "created_at": "2026-11-07T01:05:37.026797+00:00",
+      "experiment_id": "bench-37560072910d2d9e",
+      "meets_requirements": false,
+      "metrics": {
+        "chrf_mean": null,
+        "controlled_failure_reliability": 0.0,
+        "critical_failures": 14.0,
+        "critical_technical_errors": 34.0,
+        "disk_size_bytes": 2497293931.0,
+        "extra_commentary_rate": null,
+        "false_refusal_rate": 0.0,
+        "gpu_peak_memory_mib": 21874.0,
+        "grammar_violations_per_100_words": null,
+        "guard_pass_rate": 0.0,
+        "hallucination_rate": 0.0,
+        "identity_edit_similarity": null,
+        "instruction_structure_violations_per_100_words": null,
+        "invalid_output_rate": 1.0,
+        "latency_mean_s": 1.0231555555555554,
+        "latency_p90_s": 1.22084,
+        "meaning_preservation": null,
+        "missing_information_rate": 1.0,
+        "model_vram_mib": 7503.0,
+        "negation_preservation": null,
+        "non_english_output_rate": null,
+        "numerical_accuracy": null,
+        "output_words_mean": null,
+        "output_words_p50": null,
+        "output_words_p90": null,
+        "parameter_count": 4000000000.0,
+        "repair_attempts": 0.0,
+        "repair_success_rate": null,
+        "repetition_rate": null,
+        "safety_label_preservation": null,
+        "sentence_length_violations_per_100_words": null,
+        "sequence_preservation": null,
+        "source_leakage_rate": null,
+        "ste_only_output_rate": 0.0,
+        "ste_rule_pass_rate": 0.0,
+        "task_completion_rate": 0.0,
+        "technical_error_rate": 1.0,
+        "terminology_accuracy": null,
+        "terminology_preservation": null,
+        "tokens_per_s": 306.78,
+        "unnecessary_rewrite_rate": 1.0,
+        "unsupported_addition_rate": null,
+        "violations_per_100_words": null,
+        "vocabulary_compliance": null
+      },
+      "parameter_count": 4000000000,
+      "requirement_failures": [
+        "critical_failures = 14.000 (max 0.0)",
+        "meaning_preservation is not available",
+        "missing_information_rate = 1.000 (max 0.1)",
+        "ste_only_output_rate = 0.000 (min 0.98)",
+        "non_english_output_rate is not available",
+        "extra_commentary_rate is not available",
+        "controlled_failure_reliability = 0.000 (min 0.9)",
+        "ste_rule_pass_rate = 0.000 (min 0.8)",
+        "unnecessary_rewrite_rate = 1.000 (max 0.2)",
+        "technical_error_rate = 1.000 (max 0.05)",
+        "safety_label_preservation is not available",
+        "negation_preservation is not available"
+      ],
+      "role": "prompted"
+    },
+    "qwen3-8b-ste-only": {
+      "created_at": "2026-11-07T01:05:53.159122+00:00",
+      "experiment_id": "bench-9d40b89fa055a19c",
+      "meets_requirements": false,
+      "metrics": {
+        "chrf_mean": 63.8505,
+        "controlled_failure_reliability": 0.9,
+        "critical_failures": 4.0,
+        "critical_technical_errors": 6.0,
+        "disk_size_bytes": 5225388164.0,
+        "extra_commentary_rate": 0.0,
+        "false_refusal_rate": 0.0,
+        "gpu_peak_memory_mib": 24174.0,
+        "grammar_violations_per_100_words": 4.4372,
+        "guard_pass_rate": 0.8235294117647058,
+        "hallucination_rate": 0.029411764705882353,
+        "identity_edit_similarity": 0.9872,
+        "instruction_structure_violations_per_100_words": null,
+        "invalid_output_rate": 0.0,
+        "latency_mean_s": 0.3346340909090909,
+        "latency_p90_s": 0.31610000000000005,
+        "meaning_preservation": 0.9471,
+        "missing_information_rate": 0.17647058823529413,
+        "model_vram_mib": 9833.0,
+        "negation_preservation": 0.8461538461538461,
+        "non_english_output_rate": 0.0,
+        "numerical_accuracy": 0.9411764705882353,
+        "output_words_mean": 27.176470588235293,
+        "output_words_p50": 25.0,
+        "output_words_p90": 40.199999999999996,
+        "parameter_count": 8200000000.0,
+        "repair_attempts": 0.0,
+        "repair_success_rate": null,
+        "repetition_rate": 0.0,
+        "safety_label_preservation": 0.8333333333333334,
+        "sentence_length_violations_per_100_words": 0.4329,
+        "sequence_preservation": 1.0,
+        "source_leakage_rate": 0.0,
+        "ste_only_output_rate": 1.0,
+        "ste_rule_pass_rate": 0.6470588235294118,
+        "task_completion_rate": 1.0,
+        "technical_error_rate": 0.17647058823529413,
+        "terminology_accuracy": 1.0,
+        "terminology_preservation": 1.0,
+        "tokens_per_s": 220.97,
+        "unnecessary_rewrite_rate": 0.2,
+        "unsupported_addition_rate": 0.029411764705882353,
+        "violations_per_100_words": 4.8701,
+        "vocabulary_compliance": null
+      },
+      "parameter_count": 8200000000,
+      "requirement_failures": [
+        "critical_failures = 4.000 (max 0.0)",
+        "hallucination_rate = 0.029 (max 0.0)",
+        "meaning_preservation = 0.947 (min 0.95)",
+        "missing_information_rate = 0.176 (max 0.1)",
+        "ste_rule_pass_rate = 0.647 (min 0.8)",
+        "technical_error_rate = 0.176 (max 0.05)",
+        "safety_label_preservation = 0.833 (min 1.0)",
+        "negation_preservation = 0.846 (min 1.0)"
+      ],
+      "role": "prompted"
+    }
+  },
+  "comparability_key": "ste-multilingual@1:44f4c143|ste-only-eval-0.3|ste-heuristic-0.1:0096b28d",
+  "failed_experiments": [],
+  "history_records": 41,
+  "pending_candidates": [],
+  "primary_suite": "ste-multilingual-v1",
+  "regressions": [
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-20261106t221211z",
+      "kind": "critical",
+      "message": "11 critical safety failure(s): lost WARNING/CAUTION labels or missing/invented facts in safety-critical items. Human review is required.",
+      "metric": "critical_failures",
+      "reference": "qwen3-0.6b-untuned",
+      "reference_kind": "untuned base"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-20261106t221211z",
+      "kind": "regression",
+      "message": "Increased by 0.088 (limit 0.0).",
+      "metric": "hallucination_rate",
+      "reference": "qwen3-0.6b-untuned",
+      "reference_kind": "untuned base"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-20261106t221211z",
+      "kind": "regression",
+      "message": "Increased by 2.000 (limit 0.0).",
+      "metric": "critical_failures",
+      "reference": "qwen3-0.6b-untuned",
+      "reference_kind": "untuned base"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-20261106t221211z",
+      "kind": "regression",
+      "message": "Dropped by 0.059 (limit 0.0).",
+      "metric": "terminology_preservation",
+      "reference": "qwen3-0.6b-untuned",
+      "reference_kind": "untuned base"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-20261106t221211z",
+      "kind": "regression",
+      "message": "Increased by 0.088 (limit 0.0).",
+      "metric": "unsupported_addition_rate",
+      "reference": "qwen3-0.6b-untuned",
+      "reference_kind": "untuned base"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-20261106t221211z",
+      "kind": "critical",
+      "message": "11 critical safety failure(s): lost WARNING/CAUTION labels or missing/invented facts in safety-critical items. Human review is required.",
+      "metric": "critical_failures",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-20261106t221211z",
+      "kind": "regression",
+      "message": "Increased by 0.029 (limit 0.0).",
+      "metric": "hallucination_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-20261106t221211z",
+      "kind": "regression",
+      "message": "Increased by 0.118 (limit 0.05).",
+      "metric": "missing_information_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-20261106t221211z",
+      "kind": "regression",
+      "message": "Increased by 0.118 (limit 0.0).",
+      "metric": "technical_error_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-20261106t221211z",
+      "kind": "regression",
+      "message": "Increased by 5.000 (limit 0.0).",
+      "metric": "critical_failures",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-20261106t221211z",
+      "kind": "regression",
+      "message": "Dropped by 0.154 (limit 0.0).",
+      "metric": "negation_preservation",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-20261106t221211z",
+      "kind": "regression",
+      "message": "Dropped by 0.083 (limit 0.0).",
+      "metric": "safety_label_preservation",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-20261106t221211z",
+      "kind": "regression",
+      "message": "Increased by 0.029 (limit 0.0).",
+      "metric": "unsupported_addition_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "kind": "critical",
+      "message": "6 critical safety failure(s): lost WARNING/CAUTION labels or missing/invented facts in safety-critical items. Human review is required.",
+      "metric": "critical_failures",
+      "reference": "qwen3-0.6b-untuned",
+      "reference_kind": "untuned base"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "kind": "regression",
+      "message": "Increased by 0.059 (limit 0.0).",
+      "metric": "hallucination_rate",
+      "reference": "qwen3-0.6b-untuned",
+      "reference_kind": "untuned base"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "kind": "regression",
+      "message": "Dropped by 0.059 (limit 0.0).",
+      "metric": "terminology_preservation",
+      "reference": "qwen3-0.6b-untuned",
+      "reference_kind": "untuned base"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "kind": "regression",
+      "message": "Increased by 0.059 (limit 0.0).",
+      "metric": "unsupported_addition_rate",
+      "reference": "qwen3-0.6b-untuned",
+      "reference_kind": "untuned base"
+    },
+    {
+      "candidate": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "kind": "critical",
+      "message": "6 critical safety failure(s): lost WARNING/CAUTION labels or missing/invented facts in safety-critical items. Human review is required.",
+      "metric": "critical_failures",
+      "reference": "ft-qwen3-0.6b-ste-lora-20261106t221211z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-0.6b-untuned",
+      "kind": "critical",
+      "message": "9 critical safety failure(s): lost WARNING/CAUTION labels or missing/invented facts in safety-critical items. Human review is required.",
+      "metric": "critical_failures",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-0.6b-untuned",
+      "kind": "regression",
+      "message": "Dropped by 0.559 (limit 0.05).",
+      "metric": "ste_rule_pass_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-0.6b-untuned",
+      "kind": "regression",
+      "message": "Increased by 1.495 (limit 0.5).",
+      "metric": "grammar_violations_per_100_words",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-0.6b-untuned",
+      "kind": "regression",
+      "message": "Dropped by 0.300 (limit 0.03).",
+      "metric": "meaning_preservation",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-0.6b-untuned",
+      "kind": "regression",
+      "message": "Increased by 0.235 (limit 0.05).",
+      "metric": "missing_information_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-0.6b-untuned",
+      "kind": "regression",
+      "message": "Dropped by 0.382 (limit 0.02).",
+      "metric": "ste_only_output_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-0.6b-untuned",
+      "kind": "regression",
+      "message": "Increased by 0.276 (limit 0.0).",
+      "metric": "non_english_output_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-0.6b-untuned",
+      "kind": "regression",
+      "message": "Dropped by 0.200 (limit 0.1).",
+      "metric": "controlled_failure_reliability",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-0.6b-untuned",
+      "kind": "regression",
+      "message": "Dropped by 20.788 (limit 2.0).",
+      "metric": "chrf_mean",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-0.6b-untuned",
+      "kind": "regression",
+      "message": "Increased by 0.353 (limit 0.0).",
+      "metric": "technical_error_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-0.6b-untuned",
+      "kind": "regression",
+      "message": "Increased by 3.000 (limit 0.0).",
+      "metric": "critical_failures",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-0.6b-untuned",
+      "kind": "regression",
+      "message": "Dropped by 0.333 (limit 0.0).",
+      "metric": "negation_preservation",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-0.6b-untuned",
+      "kind": "regression",
+      "message": "Dropped by 0.533 (limit 0.0).",
+      "metric": "safety_label_preservation",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-1.7b-ste-only",
+      "kind": "critical",
+      "message": "7 critical safety failure(s): lost WARNING/CAUTION labels or missing/invented facts in safety-critical items. Human review is required.",
+      "metric": "critical_failures",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-1.7b-ste-only",
+      "kind": "regression",
+      "message": "Dropped by 0.353 (limit 0.05).",
+      "metric": "ste_rule_pass_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-1.7b-ste-only",
+      "kind": "regression",
+      "message": "Increased by 1.181 (limit 0.5).",
+      "metric": "grammar_violations_per_100_words",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-1.7b-ste-only",
+      "kind": "regression",
+      "message": "Dropped by 0.071 (limit 0.03).",
+      "metric": "meaning_preservation",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-1.7b-ste-only",
+      "kind": "regression",
+      "message": "Dropped by 0.118 (limit 0.02).",
+      "metric": "ste_only_output_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-1.7b-ste-only",
+      "kind": "regression",
+      "message": "Increased by 0.118 (limit 0.0).",
+      "metric": "non_english_output_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-1.7b-ste-only",
+      "kind": "regression",
+      "message": "Dropped by 0.300 (limit 0.1).",
+      "metric": "controlled_failure_reliability",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-1.7b-ste-only",
+      "kind": "regression",
+      "message": "Dropped by 6.399 (limit 2.0).",
+      "metric": "chrf_mean",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-1.7b-ste-only",
+      "kind": "regression",
+      "message": "Increased by 0.118 (limit 0.0).",
+      "metric": "technical_error_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-1.7b-ste-only",
+      "kind": "regression",
+      "message": "Increased by 1.000 (limit 0.0).",
+      "metric": "critical_failures",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-1.7b-ste-only",
+      "kind": "regression",
+      "message": "Dropped by 0.154 (limit 0.0).",
+      "metric": "negation_preservation",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-1.7b-ste-only",
+      "kind": "regression",
+      "message": "Dropped by 0.417 (limit 0.0).",
+      "metric": "safety_label_preservation",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-4b-ste-only",
+      "kind": "critical",
+      "message": "14 critical safety failure(s): lost WARNING/CAUTION labels or missing/invented facts in safety-critical items. Human review is required.",
+      "metric": "critical_failures",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-4b-ste-only",
+      "kind": "regression",
+      "message": "Dropped by 0.853 (limit 0.05).",
+      "metric": "ste_rule_pass_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-4b-ste-only",
+      "kind": "regression",
+      "message": "Increased by 0.706 (limit 0.05).",
+      "metric": "missing_information_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-4b-ste-only",
+      "kind": "regression",
+      "message": "+145% slower (limit +25%).",
+      "metric": "latency_mean_s",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-4b-ste-only",
+      "kind": "regression",
+      "message": "+58% larger on disk, but STE pass rate changed only -0.853 (needs at least +0.030).",
+      "metric": "disk_size_bytes",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-4b-ste-only",
+      "kind": "regression",
+      "message": "Dropped by 1.000 (limit 0.02).",
+      "metric": "ste_only_output_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-4b-ste-only",
+      "kind": "regression",
+      "message": "Dropped by 1.000 (limit 0.1).",
+      "metric": "controlled_failure_reliability",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-4b-ste-only",
+      "kind": "regression",
+      "message": "Increased by 0.824 (limit 0.0).",
+      "metric": "technical_error_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-4b-ste-only",
+      "kind": "regression",
+      "message": "Increased by 8.000 (limit 0.0).",
+      "metric": "critical_failures",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-8b-ste-only",
+      "kind": "critical",
+      "message": "4 critical safety failure(s): lost WARNING/CAUTION labels or missing/invented facts in safety-critical items. Human review is required.",
+      "metric": "critical_failures",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-8b-ste-only",
+      "kind": "regression",
+      "message": "Dropped by 0.206 (limit 0.05).",
+      "metric": "ste_rule_pass_rate",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-8b-ste-only",
+      "kind": "regression",
+      "message": "Increased by 0.921 (limit 0.5).",
+      "metric": "grammar_violations_per_100_words",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-8b-ste-only",
+      "kind": "regression",
+      "message": "+230% larger on disk, but STE pass rate changed only -0.206 (needs at least +0.030).",
+      "metric": "disk_size_bytes",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    },
+    {
+      "candidate": "qwen3-8b-ste-only",
+      "kind": "regression",
+      "message": "Dropped by 0.154 (limit 0.0).",
+      "metric": "negation_preservation",
+      "reference": "ft-qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107t011144z",
+      "reference_kind": "best of equal or smaller size"
+    }
+  ],
+  "selected_model": null,
+  "suite": {
+    "item_count": 44,
+    "review_state": "draft",
+    "sha256": "44f4c1431221ed5ae41636a8b5d2ff2e624d0a57b3f52ab3fa9411b137bd6329",
+    "suite_id": "ste-multilingual",
+    "version": 1
+  },
+  "suites": {
+    "ste-golden-v0": {
+      "candidates": {
+        "qwen3-1.7b-base": {
+          "created_at": "2026-11-06T17:20:12.804303+00:00",
+          "experiment_id": "bench-590d1f9e8031d22c",
+          "meets_requirements": false,
+          "metrics": {
+            "critical_failures": 1.0,
+            "disk_size_bytes": 1359293444.0,
+            "gpu_peak_memory_mib": 10541.0,
+            "grammar_violations_per_100_words": 8.5366,
+            "hallucination_rate": 0.0,
+            "invalid_output_rate": 0.0,
+            "latency_mean_s": 0.4099625,
+            "latency_p90_s": 0.26805,
+            "meaning_preservation": 0.9895,
+            "missing_information_rate": 0.0625,
+            "model_vram_mib": 5078.0,
+            "output_words_mean": 41.0,
+            "output_words_p50": 40.0,
+            "output_words_p90": 47.0,
+            "parameter_count": 2000000000.0,
+            "repair_attempts": 0.0,
+            "repair_success_rate": null,
+            "repetition_rate": 0.0,
+            "sentence_length_violations_per_100_words": 1.9817,
+            "ste_rule_pass_rate": 0.0625,
+            "task_completion_rate": 1.0,
+            "tokens_per_s": 453.05,
+            "violations_per_100_words": 10.5183,
+            "vocabulary_compliance": null
+          },
+          "parameter_count": 2000000000,
+          "requirement_failures": [
+            "ste_rule_pass_rate = 0.062 (min 0.8)",
+            "critical_failures = 1.000 (max 0.0)"
+          ],
+          "role": "base"
+        },
+        "qwen3-1.7b-prompted": {
+          "created_at": "2026-11-06T17:20:17.297364+00:00",
+          "experiment_id": "bench-9004068344ac3528",
+          "meets_requirements": false,
+          "metrics": {
+            "critical_failures": 2.0,
+            "disk_size_bytes": 1359293444.0,
+            "gpu_peak_memory_mib": 10526.0,
+            "grammar_violations_per_100_words": 6.3717,
+            "hallucination_rate": 0.0,
+            "invalid_output_rate": 0.0,
+            "latency_mean_s": 0.23108125,
+            "latency_p90_s": 0.25429999999999997,
+            "meaning_preservation": 0.9684,
+            "missing_information_rate": 0.1875,
+            "model_vram_mib": 5078.0,
+            "output_words_mean": 35.3125,
+            "output_words_p50": 34.0,
+            "output_words_p90": 44.0,
+            "parameter_count": 2000000000.0,
+            "repair_attempts": 0.0,
+            "repair_success_rate": null,
+            "repetition_rate": 0.0,
+            "sentence_length_violations_per_100_words": 1.2389,
+            "ste_rule_pass_rate": 0.3125,
+            "task_completion_rate": 1.0,
+            "tokens_per_s": 445.12,
+            "violations_per_100_words": 7.6106,
+            "vocabulary_compliance": null
+          },
+          "parameter_count": 2000000000,
+          "requirement_failures": [
+            "ste_rule_pass_rate = 0.312 (min 0.8)",
+            "missing_information_rate = 0.188 (max 0.1)",
+            "critical_failures = 2.000 (max 0.0)"
+          ],
+          "role": "prompted"
+        },
+        "qwen3-4b-base": {
+          "created_at": "2026-11-06T17:20:25.441128+00:00",
+          "experiment_id": "bench-cfd40a252d18d080",
+          "meets_requirements": false,
+          "metrics": {
+            "critical_failures": 1.0,
+            "disk_size_bytes": 2497293931.0,
+            "gpu_peak_memory_mib": 18306.0,
+            "grammar_violations_per_100_words": 4.3165,
+            "hallucination_rate": 0.0,
+            "invalid_output_rate": 0.0,
+            "latency_mean_s": 0.459575,
+            "latency_p90_s": 0.40055,
+            "meaning_preservation": 0.9474,
+            "missing_information_rate": 0.25,
+            "model_vram_mib": 7503.0,
+            "output_words_mean": 34.75,
+            "output_words_p50": 33.0,
+            "output_words_p90": 44.5,
+            "parameter_count": 4000000000.0,
+            "repair_attempts": 0.0,
+            "repair_success_rate": null,
+            "repetition_rate": 0.0,
+            "sentence_length_violations_per_100_words": 0.8993,
+            "ste_rule_pass_rate": 0.4375,
+            "task_completion_rate": 1.0,
+            "tokens_per_s": 283.26,
+            "violations_per_100_words": 5.2158,
+            "vocabulary_compliance": null
+          },
+          "parameter_count": 4000000000,
+          "requirement_failures": [
+            "ste_rule_pass_rate = 0.438 (min 0.8)",
+            "meaning_preservation = 0.947 (min 0.95)",
+            "missing_information_rate = 0.250 (max 0.1)",
+            "critical_failures = 1.000 (max 0.0)"
+          ],
+          "role": "base"
+        },
+        "qwen3-4b-prompted": {
+          "created_at": "2026-11-06T17:20:31.469246+00:00",
+          "experiment_id": "bench-653b6dd3eb7dddd8",
+          "meets_requirements": false,
+          "metrics": {
+            "critical_failures": 3.0,
+            "disk_size_bytes": 2497293931.0,
+            "gpu_peak_memory_mib": 18289.0,
+            "grammar_violations_per_100_words": 2.8626,
+            "hallucination_rate": 0.0625,
+            "invalid_output_rate": 0.0,
+            "latency_mean_s": 0.3273375,
+            "latency_p90_s": 0.39344999999999997,
+            "meaning_preservation": 0.8842,
+            "missing_information_rate": 0.4375,
+            "model_vram_mib": 7503.0,
+            "output_words_mean": 32.75,
+            "output_words_p50": 32.0,
+            "output_words_p90": 46.0,
+            "parameter_count": 4000000000.0,
+            "repair_attempts": 0.0,
+            "repair_success_rate": null,
+            "repetition_rate": 0.00255,
+            "sentence_length_violations_per_100_words": 0.1908,
+            "ste_rule_pass_rate": 0.625,
+            "task_completion_rate": 1.0,
+            "tokens_per_s": 279.84,
+            "violations_per_100_words": 3.0534,
+            "vocabulary_compliance": null
+          },
+          "parameter_count": 4000000000,
+          "requirement_failures": [
+            "ste_rule_pass_rate = 0.625 (min 0.8)",
+            "meaning_preservation = 0.884 (min 0.95)",
+            "hallucination_rate = 0.062 (max 0.0)",
+            "missing_information_rate = 0.438 (max 0.1)",
+            "critical_failures = 3.000 (max 0.0)"
+          ],
+          "role": "prompted"
+        },
+        "qwen3-8b-base": {
+          "created_at": "2026-11-06T17:20:41.111235+00:00",
+          "experiment_id": "bench-7d578c9fa1e202a5",
+          "meets_requirements": false,
+          "metrics": {
+            "critical_failures": 1.0,
+            "disk_size_bytes": 5225388164.0,
+            "gpu_peak_memory_mib": 28367.0,
+            "grammar_violations_per_100_words": 5.5462,
+            "hallucination_rate": 0.0,
+            "invalid_output_rate": 0.0,
+            "latency_mean_s": 0.55195625,
+            "latency_p90_s": 0.4691,
+            "meaning_preservation": 0.9789,
+            "missing_information_rate": 0.125,
+            "model_vram_mib": 9833.0,
+            "output_words_mean": 37.1875,
+            "output_words_p50": 37.5,
+            "output_words_p90": 45.0,
+            "parameter_count": 8200000000.0,
+            "repair_attempts": 0.0,
+            "repair_success_rate": null,
+            "repetition_rate": 0.0,
+            "sentence_length_violations_per_100_words": 1.0084,
+            "ste_rule_pass_rate": 0.4375,
+            "task_completion_rate": 1.0,
+            "tokens_per_s": 197.55,
+            "violations_per_100_words": 6.5546,
+            "vocabulary_compliance": null
+          },
+          "parameter_count": 8200000000,
+          "requirement_failures": [
+            "ste_rule_pass_rate = 0.438 (min 0.8)",
+            "missing_information_rate = 0.125 (max 0.1)",
+            "critical_failures = 1.000 (max 0.0)"
+          ],
+          "role": "base"
+        },
+        "qwen3-8b-prompted": {
+          "created_at": "2026-11-06T17:20:48.162120+00:00",
+          "experiment_id": "bench-a9e575bcdea58a30",
+          "meets_requirements": false,
+          "metrics": {
+            "critical_failures": 3.0,
+            "disk_size_bytes": 5225388164.0,
+            "gpu_peak_memory_mib": 28323.0,
+            "grammar_violations_per_100_words": 6.0811,
+            "hallucination_rate": 0.0,
+            "invalid_output_rate": 0.0,
+            "latency_mean_s": 0.3912625,
+            "latency_p90_s": 0.45235000000000003,
+            "meaning_preservation": 0.9579,
+            "missing_information_rate": 0.25,
+            "model_vram_mib": 9833.0,
+            "output_words_mean": 37.0,
+            "output_words_p50": 38.5,
+            "output_words_p90": 45.0,
+            "parameter_count": 8200000000.0,
+            "repair_attempts": 0.0,
+            "repair_success_rate": null,
+            "repetition_rate": 0.0016875,
+            "sentence_length_violations_per_100_words": 0.3378,
+            "ste_rule_pass_rate": 0.5,
+            "task_completion_rate": 1.0,
+            "tokens_per_s": 206.17,
+            "violations_per_100_words": 6.4189,
+            "vocabulary_compliance": null
+          },
+          "parameter_count": 8200000000,
+          "requirement_failures": [
+            "ste_rule_pass_rate = 0.500 (min 0.8)",
+            "missing_information_rate = 0.250 (max 0.1)",
+            "critical_failures = 3.000 (max 0.0)"
+          ],
+          "role": "prompted"
+        }
+      },
+      "comparability_key": "ste-golden@0:dd2da831|eval-0.1|ste-heuristic-0.1:0096b28d",
+      "regressions": [
+        {
+          "candidate": "qwen3-1.7b-base",
+          "kind": "critical",
+          "message": "1 critical safety failure(s): lost WARNING/CAUTION labels or missing/invented facts in safety-critical items. Human review is required.",
+          "metric": "critical_failures",
+          "reference": "qwen3-1.7b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        },
+        {
+          "candidate": "qwen3-1.7b-base",
+          "kind": "regression",
+          "message": "Dropped by 0.250 (limit 0.05).",
+          "metric": "ste_rule_pass_rate",
+          "reference": "qwen3-1.7b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        },
+        {
+          "candidate": "qwen3-1.7b-base",
+          "kind": "regression",
+          "message": "Increased by 2.165 (limit 0.5).",
+          "metric": "grammar_violations_per_100_words",
+          "reference": "qwen3-1.7b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        },
+        {
+          "candidate": "qwen3-1.7b-base",
+          "kind": "regression",
+          "message": "+77% slower (limit +25%).",
+          "metric": "latency_mean_s",
+          "reference": "qwen3-1.7b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        },
+        {
+          "candidate": "qwen3-1.7b-prompted",
+          "kind": "critical",
+          "message": "2 critical safety failure(s): lost WARNING/CAUTION labels or missing/invented facts in safety-critical items. Human review is required.",
+          "metric": "critical_failures",
+          "reference": "qwen3-1.7b-base",
+          "reference_kind": "untuned base"
+        },
+        {
+          "candidate": "qwen3-1.7b-prompted",
+          "kind": "regression",
+          "message": "Increased by 0.125 (limit 0.05).",
+          "metric": "missing_information_rate",
+          "reference": "qwen3-1.7b-base",
+          "reference_kind": "untuned base"
+        },
+        {
+          "candidate": "qwen3-1.7b-prompted",
+          "kind": "regression",
+          "message": "Increased by 1.000 (limit 0.0).",
+          "metric": "critical_failures",
+          "reference": "qwen3-1.7b-base",
+          "reference_kind": "untuned base"
+        },
+        {
+          "candidate": "qwen3-4b-base",
+          "kind": "critical",
+          "message": "1 critical safety failure(s): lost WARNING/CAUTION labels or missing/invented facts in safety-critical items. Human review is required.",
+          "metric": "critical_failures",
+          "reference": "qwen3-4b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        },
+        {
+          "candidate": "qwen3-4b-base",
+          "kind": "regression",
+          "message": "Dropped by 0.188 (limit 0.05).",
+          "metric": "ste_rule_pass_rate",
+          "reference": "qwen3-4b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        },
+        {
+          "candidate": "qwen3-4b-base",
+          "kind": "regression",
+          "message": "Increased by 1.454 (limit 0.5).",
+          "metric": "grammar_violations_per_100_words",
+          "reference": "qwen3-4b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        },
+        {
+          "candidate": "qwen3-4b-base",
+          "kind": "regression",
+          "message": "+40% slower (limit +25%).",
+          "metric": "latency_mean_s",
+          "reference": "qwen3-4b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        },
+        {
+          "candidate": "qwen3-4b-prompted",
+          "kind": "critical",
+          "message": "3 critical safety failure(s): lost WARNING/CAUTION labels or missing/invented facts in safety-critical items. Human review is required.",
+          "metric": "critical_failures",
+          "reference": "qwen3-4b-base",
+          "reference_kind": "untuned base"
+        },
+        {
+          "candidate": "qwen3-4b-prompted",
+          "kind": "regression",
+          "message": "Dropped by 0.063 (limit 0.03).",
+          "metric": "meaning_preservation",
+          "reference": "qwen3-4b-base",
+          "reference_kind": "untuned base"
+        },
+        {
+          "candidate": "qwen3-4b-prompted",
+          "kind": "regression",
+          "message": "Increased by 0.062 (limit 0.0).",
+          "metric": "hallucination_rate",
+          "reference": "qwen3-4b-base",
+          "reference_kind": "untuned base"
+        },
+        {
+          "candidate": "qwen3-4b-prompted",
+          "kind": "regression",
+          "message": "Increased by 0.188 (limit 0.05).",
+          "metric": "missing_information_rate",
+          "reference": "qwen3-4b-base",
+          "reference_kind": "untuned base"
+        },
+        {
+          "candidate": "qwen3-4b-prompted",
+          "kind": "regression",
+          "message": "Increased by 2.000 (limit 0.0).",
+          "metric": "critical_failures",
+          "reference": "qwen3-4b-base",
+          "reference_kind": "untuned base"
+        },
+        {
+          "candidate": "qwen3-8b-base",
+          "kind": "critical",
+          "message": "1 critical safety failure(s): lost WARNING/CAUTION labels or missing/invented facts in safety-critical items. Human review is required.",
+          "metric": "critical_failures",
+          "reference": "qwen3-4b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        },
+        {
+          "candidate": "qwen3-8b-base",
+          "kind": "regression",
+          "message": "Dropped by 0.188 (limit 0.05).",
+          "metric": "ste_rule_pass_rate",
+          "reference": "qwen3-4b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        },
+        {
+          "candidate": "qwen3-8b-base",
+          "kind": "regression",
+          "message": "Increased by 2.684 (limit 0.5).",
+          "metric": "grammar_violations_per_100_words",
+          "reference": "qwen3-4b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        },
+        {
+          "candidate": "qwen3-8b-base",
+          "kind": "regression",
+          "message": "+69% slower (limit +25%).",
+          "metric": "latency_mean_s",
+          "reference": "qwen3-4b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        },
+        {
+          "candidate": "qwen3-8b-base",
+          "kind": "regression",
+          "message": "+109% larger on disk, but STE pass rate changed only -0.188 (needs at least +0.030).",
+          "metric": "disk_size_bytes",
+          "reference": "qwen3-4b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        },
+        {
+          "candidate": "qwen3-8b-prompted",
+          "kind": "critical",
+          "message": "3 critical safety failure(s): lost WARNING/CAUTION labels or missing/invented facts in safety-critical items. Human review is required.",
+          "metric": "critical_failures",
+          "reference": "qwen3-8b-base",
+          "reference_kind": "untuned base"
+        },
+        {
+          "candidate": "qwen3-8b-prompted",
+          "kind": "regression",
+          "message": "Increased by 0.535 (limit 0.5).",
+          "metric": "grammar_violations_per_100_words",
+          "reference": "qwen3-8b-base",
+          "reference_kind": "untuned base"
+        },
+        {
+          "candidate": "qwen3-8b-prompted",
+          "kind": "regression",
+          "message": "Increased by 0.125 (limit 0.05).",
+          "metric": "missing_information_rate",
+          "reference": "qwen3-8b-base",
+          "reference_kind": "untuned base"
+        },
+        {
+          "candidate": "qwen3-8b-prompted",
+          "kind": "regression",
+          "message": "Increased by 2.000 (limit 0.0).",
+          "metric": "critical_failures",
+          "reference": "qwen3-8b-base",
+          "reference_kind": "untuned base"
+        },
+        {
+          "candidate": "qwen3-8b-prompted",
+          "kind": "critical",
+          "message": "3 critical safety failure(s): lost WARNING/CAUTION labels or missing/invented facts in safety-critical items. Human review is required.",
+          "metric": "critical_failures",
+          "reference": "qwen3-4b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        },
+        {
+          "candidate": "qwen3-8b-prompted",
+          "kind": "regression",
+          "message": "Dropped by 0.125 (limit 0.05).",
+          "metric": "ste_rule_pass_rate",
+          "reference": "qwen3-4b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        },
+        {
+          "candidate": "qwen3-8b-prompted",
+          "kind": "regression",
+          "message": "Increased by 3.219 (limit 0.5).",
+          "metric": "grammar_violations_per_100_words",
+          "reference": "qwen3-4b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        },
+        {
+          "candidate": "qwen3-8b-prompted",
+          "kind": "regression",
+          "message": "+109% larger on disk, but STE pass rate changed only -0.125 (needs at least +0.030).",
+          "metric": "disk_size_bytes",
+          "reference": "qwen3-4b-prompted",
+          "reference_kind": "best of equal or smaller size"
+        }
+      ],
+      "selected_model": null,
+      "suite": {
+        "item_count": 16,
+        "review_state": "draft",
+        "sha256": "dd2da8314b223badaf18c5a792751de3284aa59a8eb261bdea0631d1c8459657",
+        "suite_id": "ste-golden",
+        "version": 0
+      }
+    }
+  },
+  "training_runs": [
+    {
+      "dataset_fingerprint": "99076a4847543a4eb56e94dc091c8bd129297465d27fa55ae8ad47c4fa2c527d",
+      "experiment_id": "train-b6063f54ca86ef1f",
+      "label": "experimental",
+      "run_id": "qwen3-0.6b-ste-lora-20261106T193155Z",
+      "status": "completed"
+    },
+    {
+      "dataset_fingerprint": "29272e8812c1cd0503fbcd43268e8024a7b64514c29cb3a8820db903f112b94d",
+      "experiment_id": "train-6f26b35efddd9a0c",
+      "label": "experimental",
+      "run_id": "qwen3-0.6b-ste-lora-20261106T221211Z",
+      "status": "completed"
+    },
+    {
+      "dataset_fingerprint": "556cf4912f06dc5fb386ed6cbf865837599d871933d81572167dd629be293a54",
+      "experiment_id": "train-21a46190b71e8a7b",
+      "label": "experimental",
+      "run_id": "qwen3-0.6b-ste-lora-v0.2-m4-v0.2-a-20261107T010805Z",
+      "status": "completed"
+    },
+    {
+      "dataset_fingerprint": "556cf4912f06dc5fb386ed6cbf865837599d871933d81572167dd629be293a54",
+      "experiment_id": "train-a09d3605b7f4040b",
+      "label": "experimental",
+      "run_id": "qwen3-0.6b-ste-lora-v0.2-m4-v0.2-b-20261107T010942Z",
+      "status": "completed"
+    },
+    {
+      "dataset_fingerprint": "556cf4912f06dc5fb386ed6cbf865837599d871933d81572167dd629be293a54",
+      "experiment_id": "train-569c8e0ade7e00a9",
+      "label": "experimental",
+      "run_id": "qwen3-0.6b-ste-lora-v0.2-m4-v0.2-c-20261107T011144Z",
+      "status": "completed"
+    }
+  ]
+}
