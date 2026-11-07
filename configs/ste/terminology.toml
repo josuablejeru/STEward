@@ -1,0 +1,172 @@
+# Multilingual technical-terminology fixtures for fidelity checks.
+#
+# Each entry matches a source-language term (a regular expression, case-insensitive
+# unless case_sensitive = true). When the source text matches:
+#
+# * forbidden: an English rendering that is wrong in a maintenance context. Finding it
+#   in the English output is a CRITICAL error (deterministic match on the output).
+# * expected: acceptable English renderings. If none is present, the check is only a
+#   heuristic warning, because a correct paraphrase is possible.
+#
+# More specific entries (for example "22-mm-Schlüssel") come before general ones and
+# set `exclusive = true`, so the general entry is not applied to the same text.
+# The mappings are context dependent; they are NOT universal translations. They were
+# written by Claude for STEward (2026-11-07) and need review by native speakers.
+
+# --- German -------------------------------------------------------------------
+[[term]]
+id = "de-mutter"
+language = "de"
+pattern = '\b(?:Mutter|Muttern|Sechskantmutter|Sicherungsmutter|Überwurfmutter)\b'
+case_sensitive = true
+expected = ["nut", "nuts"]
+forbidden = ["mother", "mothers"]
+note = "Mutter (capitalized noun) in a mechanical context is a threaded nut."
+
+[[term]]
+id = "de-schluessel-tool"
+language = "de"
+pattern = '(?:\d+\s*-?\s*mm\s*-?\s*Schlüssel|Schraubenschlüssel|Maulschlüssel|Ringschlüssel|Drehmomentschlüssel|Gabelschlüssel)'
+expected = ["wrench", "spanner"]
+forbidden = ["key", "keys"]
+exclusive = true
+note = "A sized or named Schlüssel used on fasteners is a wrench."
+
+[[term]]
+id = "de-schluessel"
+language = "de"
+pattern = '\bSchlüssel\b'
+expected = ["wrench", "spanner", "key"]
+forbidden = []
+note = "Schlüssel is a wrench for fasteners or a key for a lock; context decides."
+
+[[term]]
+id = "de-dichtung"
+language = "de"
+pattern = '\b(?:Dichtung|Dichtungen|Dichtring|Dichtungsring)\b'
+expected = ["seal", "seals", "gasket", "gaskets", "packing", "o-ring"]
+forbidden = ["poem", "poems", "poetry", "density"]
+note = "Dichtung is a seal or gasket, never a poem in this domain."
+
+[[term]]
+id = "de-loesen"
+language = "de"
+pattern = '\b(?:lösen|löst|gelöst|lösen Sie)\b'
+expected = ["loosen", "disconnect", "remove", "release", "undo", "unlock", "disengage"]
+forbidden = ["solve", "solved", "dissolve", "dissolved"]
+note = "lösen is loosen, disconnect, release, or remove; never solve."
+
+[[term]]
+id = "de-schraube"
+language = "de"
+pattern = '\b(?:Schraube|Schrauben)\b'
+expected = ["screw", "screws", "bolt", "bolts"]
+forbidden = []
+note = "Schraube is a screw or bolt depending on the fastener."
+
+[[term]]
+id = "de-druckluft"
+language = "de"
+pattern = '\bDruckluft\b'
+expected = ["compressed air", "shop air", "pressurized air"]
+forbidden = ["pressure air"]
+note = "Druckluft is compressed air."
+
+[[term]]
+id = "de-leitung"
+language = "de"
+pattern = '\b(?:Leitung|Leitungen|Hydraulikleitung|Kraftstoffleitung)\b'
+expected = ["line", "lines", "pipe", "pipes", "tube", "tubes", "hose", "hoses", "cable", "cables", "wire", "wires", "duct"]
+forbidden = ["management", "leadership"]
+note = "Leitung is a line, pipe, hose, or cable; never management."
+
+[[term]]
+id = "de-deckel"
+language = "de"
+pattern = '\b(?:Deckel|Filterdeckel|Gehäusedeckel)\b'
+expected = ["cover", "covers", "cap", "caps", "lid"]
+forbidden = []
+note = "Deckel is a cover or cap."
+
+# --- Romanian -----------------------------------------------------------------
+[[term]]
+id = "ro-panou"
+language = "ro"
+pattern = '\bpanou(?:l|ri|rile|lui)?\b'
+expected = ["panel", "panels"]
+forbidden = ["panou", "panoul", "panouri", "panourile"]
+note = "panou is a panel; the Romanian word must not stay in the output."
+
+[[term]]
+id = "ro-surub"
+language = "ro"
+pattern = '\b(?:șurub|şurub|surub)(?:ul|uri|urile|urilor)?\b'
+expected = ["screw", "screws", "bolt", "bolts"]
+forbidden = ["surub", "suruburi", "șurub", "șuruburi"]
+note = "șurub is a screw or bolt depending on the fastener."
+
+[[term]]
+id = "ro-piulita"
+language = "ro"
+pattern = '\b(?:piuliț|piuliţ|piulit)\w*'
+expected = ["nut", "nuts"]
+forbidden = ["piulita", "piulița"]
+note = "piuliță is a nut."
+
+[[term]]
+id = "ro-garnitura"
+language = "ro"
+pattern = '\bgarnitur\w*'
+expected = ["seal", "seals", "gasket", "gaskets"]
+forbidden = ["garnish", "garnitura"]
+note = "garnitură is a seal or gasket."
+
+[[term]]
+id = "ro-cheie"
+language = "ro"
+pattern = '\bchei(?:e|a|le)?\b'
+expected = ["wrench", "spanner", "key"]
+forbidden = []
+note = "cheie is a wrench for fasteners or a key for a lock."
+
+# --- French -------------------------------------------------------------------
+[[term]]
+id = "fr-mains-nues"
+language = "fr"
+pattern = '\bà\s+mains\s+nues\b|\bmains\s+nues\b'
+expected = ["bare hand", "bare hands", "without gloves"]
+forbidden = ["with gloves", "wearing gloves", "gloved hands", "with a glove", "wear gloves to touch"]
+note = "à mains nues is with bare hands; it must never become 'with gloves'."
+
+[[term]]
+id = "fr-ecrou"
+language = "fr"
+pattern = '\bécrou(?:s)?\b'
+expected = ["nut", "nuts"]
+forbidden = ["screen", "ecrou"]
+note = "écrou is a nut (not écran, screen)."
+
+[[term]]
+id = "fr-joint"
+language = "fr"
+pattern = '\bjoint(?:s)?\s+(?:torique|d.étanchéité)'
+expected = ["seal", "seals", "o-ring", "gasket", "packing"]
+forbidden = []
+exclusive = true
+note = "joint torique / joint d'étanchéité is an O-ring or seal."
+
+[[term]]
+id = "fr-cle"
+language = "fr"
+pattern = '\bclé(?:s)?\b'
+expected = ["wrench", "spanner", "key"]
+forbidden = []
+note = "clé is a wrench for fasteners or a key for a lock."
+
+[[term]]
+id = "fr-vis"
+language = "fr"
+pattern = '\bvis\b'
+expected = ["screw", "screws", "bolt", "bolts"]
+forbidden = []
+note = "vis is a screw."

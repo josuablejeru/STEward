@@ -1,0 +1,17 @@
+# Project terminology for the heuristic STE rule checks.
+# These words end in -ing but are nouns or fixed technical names, so the
+# STE-GRAM-ING check does not report them. Add project terms here with a
+# short reason. This is not the ASD-STE100 dictionary.
+version = 1
+
+ing_words_allowed = [
+    # general words that are not verb forms
+    "anything", "bring", "ceiling", "during", "everything", "king", "nothing",
+    "ring", "something", "spring", "string", "thing", "things", "wing", "wings",
+    # technical nouns / part names
+    "bearing", "bearings", "bushing", "bushings", "casing", "coupling", "couplings",
+    "fairing", "fairings", "fitting", "fittings", "housing", "housings", "lining",
+    "o-ring", "o-rings", "packing", "piping", "seal-ring", "shielding", "tubing",
+    "wiring", "landing", "rating", "setting", "settings", "marking", "markings",
+    "reading", "readings", "opening", "openings", "warning", "warnings",
+]
